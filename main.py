@@ -39,8 +39,8 @@ def main():
     aqi_china = map(lambda a: AQIChina(a)(), pm25)
     aqi_us = map(lambda a: AQIUS(a)(), pm25)
     result = zip(stations.values(), pm25, aqi_china, aqi_us)
-    # update_status(make_status(result))
-    print make_status(result).encode("GBK", 'ignore')
+    update_status(make_status(result))
+    #print make_status(result).encode("GBK", 'ignore')
 
 
 if __name__ == '__main__':

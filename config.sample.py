@@ -11,6 +11,15 @@ TWITTER = {
     "update_url": "http://api.twitter.com/1/statuses/update.json",
 }
 
+SINA = {
+    "app_key": "",
+    "app_secret": "",
+    "oauth_token": "",
+    "oauth_token_secret": "",
+    "user_id": "",
+    "update_url": "http://api.t.sina.com.cn/statuses/update.json",
+}
+
 STATION = {
     "AQMS02500100": u"草场门",
     "AQMS02500101": u"中华门",

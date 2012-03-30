@@ -5,7 +5,7 @@ from datetime import datetime
 from suds.client import Client
 import config
 from aqi import AQIChina, AQIUS
-from social import update_twitter
+from social import update_twitter, update_sina
 
 
 def read_pm25():
@@ -31,6 +31,7 @@ def make_status(result):
 
 def update_status(status):
     update_twitter(status, config.TWITTER)
+    update_sina(status, config.SINA)
 
 
 def main():

@@ -8,6 +8,7 @@ TWITTER = {
     "consumer_secret": "",
     "oauth_token": "",
     "oauth_token_secret": "",
+    "update_url": "http://api.twitter.com/1/statuses/update.json",
 }
 
 STATION = {

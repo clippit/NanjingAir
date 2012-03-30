@@ -21,7 +21,7 @@ def make_status(result):
     info = list()
     for i in result:
         if i[1] is not None:
-            info.append(u"%s: %d, 参考AQI: %d(%s)" % i)
+            info.append(u"%s: %dμg/m³, 参考AQI: %d(%s)" % i)
         else:
             info.append(u"%s: 暂无数据" % i[0])
     return u"【%s PM2.5浓度播报】%s" % (time, u'；'.join(info))

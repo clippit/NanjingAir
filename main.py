@@ -4,7 +4,7 @@
 from datetime import datetime
 from suds.client import Client
 import config
-from aqi import aqi_pm25, aqi_desc
+from aqi import AQIChina, AQIUS
 from social import update_twitter
 
 
@@ -22,10 +22,11 @@ def make_status(result):
     info = list()
     for i in result:
         if i[1] is not None:
-            info.append(u"%s: %dμg/m³, 参考AQI: %d(%s)" % i)
+            info.append(u"%s：%dμg/m³，国标AQI：%d(%s) 美标：%d(%s)"
+                 % (i[0], i[1], i[2][0], i[2][1], i[3][0], i[3][1]))  # TODO it's ugly...
         else:
             info.append(u"%s: 暂无数据" % i[0])
-    return u"【%s PM2.5浓度播报】%s" % (time, u'；'.join(info))
+    return u"【%s PM2.5播报】%s" % (time, u'；'.join(info))
 
 
 def update_status(status):
@@ -35,10 +36,11 @@ def update_status(status):
 def main():
     stations = config.STATION
     pm25 = read_pm25()
-    aqi = map(aqi_pm25, pm25)
-    desc = map(aqi_desc, aqi)
-    result = zip(stations.values(), pm25, aqi, desc)
-    update_status(make_status(result))
+    aqi_china = map(lambda a: AQIChina(a)(), pm25)
+    aqi_us = map(lambda a: AQIUS(a)(), pm25)
+    result = zip(stations.values(), pm25, aqi_china, aqi_us)
+    # update_status(make_status(result))
+    print make_status(result).encode("GBK", 'ignore')
 
 
 if __name__ == '__main__':

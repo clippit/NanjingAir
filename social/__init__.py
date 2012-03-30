@@ -3,6 +3,7 @@
 
 import oauth2 as oauth
 
+
 def update_twitter(status, config):
     consumer = oauth.Consumer(config['consumer_key'], config['consumer_secret'])
     token = oauth.Token(config['oauth_token'], config['oauth_token_secret'])

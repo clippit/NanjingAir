@@ -18,7 +18,7 @@ def read_pm25():
 
 
 def make_status(result):
-    time = datetime.today().strftime(u"%m月%d日%H时".encode("UTF-8")).decode('UTF-8')
+    time = datetime.today().strftime(u"%d日%H时".encode("UTF-8")).decode('UTF-8')
     info = list()
     for i in result:
         if i[1] is not None:
@@ -26,7 +26,7 @@ def make_status(result):
                  % (i[0], i[1], i[2][0], i[2][1], i[3][0], i[3][1]))  # TODO it's ugly...
         else:
             info.append(u"%s: 暂无数据" % i[0])
-    return u"【%s PM2.5播报】%s" % (time, u'；'.join(info))
+    return u"【%sPM2.5播报】%s" % (time, u'；'.join(info))
 
 
 def update_status(status):

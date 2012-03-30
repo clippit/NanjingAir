@@ -5,6 +5,7 @@ from datetime import datetime
 from suds.client import Client
 import config
 from aqi import aqi_pm25, aqi_desc
+from social import update_twitter
 
 
 def read_pm25():
@@ -27,13 +28,17 @@ def make_status(result):
     return u"【%s PM2.5浓度播报】%s" % (time, u'；'.join(info))
 
 
+def update_status(status):
+    update_twitter(status, config.TWITTER)
+
+
 def main():
     stations = config.STATION
     pm25 = read_pm25()
     aqi = map(aqi_pm25, pm25)
     desc = map(aqi_desc, aqi)
     result = zip(stations.values(), pm25, aqi, desc)
-    print (make_status(result))
+    update_status(make_status(result))
 
 
 if __name__ == '__main__':

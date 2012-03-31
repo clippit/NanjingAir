@@ -11,6 +11,7 @@ def update_twitter(status, config):
     data = u'status=%s' % (status)
     resp, content = client.request(config['update_url'], method='POST', body=data)
     if resp['status'] != '200':
+        print content
         raise Exception("Invalid response %s." % resp['status'])
 
 
@@ -21,4 +22,5 @@ def update_sina(status, config):  # It looks just like the above method, so refa
     data = u'status=%s' % (status)
     resp, content = client.request(config['update_url'], method='POST', body=data)
     if resp['status'] != '200':
+        print content
         raise Exception("Invalid response %s." % resp['status'])

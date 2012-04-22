@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 WSDL = "http://218.94.78.75/pm25services/Service.asmx?wsdl"
+DES_KEY = ''
 
 TWITTER = {
     "consumer_key": "",
@@ -12,8 +13,8 @@ TWITTER = {
 }
 
 SINA = {
-    "app_key": "",
-    "app_secret": "",
+    "consumer_key": "",
+    "consumer_secret": "",
     "oauth_token": "",
     "oauth_token_secret": "",
     "user_id": "",

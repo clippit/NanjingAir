@@ -2,7 +2,9 @@
 # -*- coding:utf-8 -*-
 
 from datetime import datetime
+from base64 import b64decode
 from suds.client import Client
+import pyDes
 import config
 from aqi import AQIChina, AQIUS
 from social import update
@@ -11,8 +13,9 @@ from social import update
 def read_pm25():
     client = Client(config.WSDL)
     extract = lambda s: int(s[8: s.find(u'微克')]) if s[9] != u'—' else None
+    key = pyDes.des(config.DES_KEY, pyDes.CBC, config.DES_KEY)
     return map(extract,
-        [unicode(client.service.getSurvyValue("PM25", scode))
+        [key.decrypt(b64decode(client.service.getSurvyValue("PM25", scode))).decode("UTF-8")
             for scode in config.STATION.iterkeys()]
         )  # I'm too lazy...
 

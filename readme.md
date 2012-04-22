@@ -10,6 +10,7 @@ Dependencies
 
 * [suds](https://fedorahosted.org/suds/) (Lightweight SOAP client)
 * [oauth2](https://github.com/simplegeo/python-oauth2)
+* [pyDes](http://twhiteman.netfirms.com/des.html) (DES decryption)
 
 
 Configuration

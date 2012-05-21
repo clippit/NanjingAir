@@ -8,7 +8,7 @@ Robot Account
 Dependencies
 ============
 
-* [suds](https://fedorahosted.org/suds/) (Lightweight SOAP client)
+* [PyAMF](http://www.pyamf.org) (Action Message Format support)
 * [oauth2](https://github.com/simplegeo/python-oauth2)
 * [pyDes](http://twhiteman.netfirms.com/des.html) (DES decryption)
 

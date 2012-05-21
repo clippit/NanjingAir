@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-WSDL = "http://218.94.78.75/pm25services/Service.asmx?wsdl"
+AMF_GATEWAY = "http://218.94.78.75/pm25RmServices/Gateway.aspx"
 DES_KEY = ''
+DES_IV = ''
 
 TWITTER = {
     "consumer_key": "",

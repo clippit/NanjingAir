@@ -3,19 +3,19 @@
 
 from datetime import datetime
 from base64 import b64decode
-from suds.client import Client
 import pyDes
+from pyamf.remoting.client import RemotingService
 import config
 from aqi import AQIChina, AQIUS
 from social import update
 
 
 def read_pm25():
-    client = Client(config.WSDL)
+    service = RemotingService(config.AMF_GATEWAY).getService('FlashRemotingServiceLibrary.Sample.getSurvyValue')
     extract = lambda s: int(s[8: s.find(u'微克')]) if s[9] != u'—' else None
-    key = pyDes.des(config.DES_KEY, pyDes.CBC, config.DES_KEY)
+    key = pyDes.des(config.DES_KEY, pyDes.CBC, config.DES_IV)
     return map(extract,
-        [key.decrypt(b64decode(client.service.getSurvyValue("PM25", scode))).decode("UTF-8")
+        [key.decrypt(b64decode(service("PM25", scode))).decode("UTF-8")
             for scode in config.STATION.iterkeys()]
         )  # I'm too lazy...
 

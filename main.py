@@ -31,7 +31,7 @@ def make_status(result):
             info.append(u"%s: 暂无数据" % i[0])
     status = u"【%sPM2.5播报】%s" % (time, u'；'.join(info))
     if len(status) > 140:  # rarely happens
-        status.replace(u"：", "")
+        status = status.replace(u"：", "")
     return status
 
 

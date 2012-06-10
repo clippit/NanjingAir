@@ -29,7 +29,10 @@ def make_status(result):
                  % (i[0], i[1], i[2][0], i[2][1], i[3][0], i[3][1]))  # TODO it's ugly...
         else:
             info.append(u"%s: 暂无数据" % i[0])
-    return u"【%sPM2.5播报】%s" % (time, u'；'.join(info))
+    status = u"【%sPM2.5播报】%s" % (time, u'；'.join(info))
+    if len(status) > 140:  # rarely happens
+        status.replace(u"：", "")
+    return status
 
 
 def update_status(status):
